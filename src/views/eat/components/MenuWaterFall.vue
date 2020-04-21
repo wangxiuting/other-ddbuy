@@ -9,19 +9,13 @@
  -->
 <template>
   <div class="container-water-fall">
-    <waterfall :col='col'
-               :data="data"
-               @loadmore="loadmore">
-      <div class="cell-item"
-           v-for="(item,index) in data"
-           :key="item.id">
-        <img v-lazy="item.image">
+    <waterfall :col="col" :data="data" @loadmore="loadmore">
+      <div class="cell-item" v-for="(item,index) in data" :key="item.id">
+        <img v-lazy="item.image" />
         <div class="item-body">
           <div class="item-desc">{{item.name}}</div>
           <div class="item-footer">
-            <img class="avatar"
-                 v-lazy="item.author_avatar"
-                 alt="">
+            <img class="avatar" v-lazy="item.author_avatar" alt />
             <div class="name">{{item.author_name}}</div>
           </div>
         </div>
@@ -31,39 +25,38 @@
 </template>
 
 <script type="text/javascript">
-import { getTodayMenuDetail } from './../../../serve/api/index.js'
-import { Toast } from 'vant';
+import { getTodayMenuDetail } from "./../../../serve/api/index.js";
+import { Toast } from "vant";
 
 export default {
-  data () {
+  data() {
     return {
       data: [],
       col: 2,
       menulistDetail: [],
       page: 1
-    }
+    };
   },
-  computed: {
-  },
-  mounted () {
+  computed: {},
+  mounted() {
     this._initData();
   },
   methods: {
     // 1.数据请求
-    async _initData () {
+    async _initData() {
       // 第一条数据
-      let ref = await getTodayMenuDetail('/lk01');
+      let ref = await getTodayMenuDetail("/lk01");
       if (ref.success) {
         this.menulistDetail = ref.data.big_recommend.list;
         this.data = ref.data.big_recommend.list;
       }
     },
-    loadmore (num) {
+    loadmore(num) {
       let index = ++this.page;
       let param;
       if (index > 31) {
         Toast({
-          message: $t('eat.tip_bottom'),
+          message: $t("eat.tip_bottom"),
           duration: 800
         });
         return;
@@ -78,7 +71,7 @@ export default {
       });
     }
   }
-}
+};
 </script>
 <style lang="less" scoped>
 .container-water-fall {

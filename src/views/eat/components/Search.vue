@@ -9,17 +9,14 @@
  -->
 <template>
   <div id="search">
-    <div class="searchBox"
-         @click="clickSearch">
+    <div class="searchBox" @click="clickSearch">
       <div class="iconSearchWrapper">
-        <svg-icon iconClass="search"
-                  class="icon" />
+        <svg-icon iconClass="search" class="icon" />
       </div>
       <span class="searchPrompt">{{$t('eat.pleaseHolder')}}</span>
       <div class="collection">
         <!-- 收藏 -->
-        <svg-icon iconClass="collection"
-                  @click="clickCollerction" />
+        <svg-icon iconClass="collection" @click="clickCollerction" />
       </div>
     </div>
     <div class="todayMenu">{{$t('eat.menu')}}</div>
@@ -27,32 +24,27 @@
 </template>
 
 <script type="text/javascript">
-import { Toast } from 'vant'
+import { Toast } from "vant";
 export default {
-  data () {
-    return {
-
-    }
+  data() {
+    return {};
   },
-  components: {
-
-  },
+  components: {},
   methods: {
-    clickCollerction () {
+    clickCollerction() {
       Toast({
-        message: this.$t('common.unrealized'),
+        message: this.$t("common.unrealized"),
         duration: 800
-      })
+      });
     },
-    clickSearch () {
+    clickSearch() {
       Toast({
-        message: this.$t('common.unrealized'),
+        message: this.$t("common.unrealized"),
         duration: 800
-      })
+      });
     }
   }
-}
-
+};
 </script>
 
 <style lang="less" scoped>
